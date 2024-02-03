@@ -1,6 +1,7 @@
 package com.example.oblig1_quizapp;
 
 import android.content.ContentResolver;
+import android.database.Cursor;
 import android.net.Uri;
 
 public class CustomUri {
@@ -22,7 +23,8 @@ public class CustomUri {
         this.uriName = uriName;
     }
 
-    public static String retriveName (CustomUri uri){
-        ContentResolver contentResolver = getContentResolver();
-    }
+    /*public static String retriveName (CustomUri uri){
+       *//* Cursor returnCursor = getContentResolver().query(uri,null,null,null,null);
+        return*//*
+    }*/
 }

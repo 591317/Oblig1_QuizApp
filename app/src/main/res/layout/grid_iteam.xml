@@ -7,14 +7,14 @@
 
     <ImageView
         android:id="@+id/animalImageView"
-        android:layout_width="400dp"
-        android:layout_height="200dp"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
         android:contentDescription="animal image">
 
     </ImageView>
 
     <TextView
-        android:id="@+id/animalName"
+        android:id="@+id/animalText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

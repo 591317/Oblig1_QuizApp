@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                // add what the button should do when clicked
                 openGallery(view);
+
             }
         });
 
