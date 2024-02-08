@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -52,6 +53,7 @@ public class QuizGame extends AppCompatActivity {
         // retrieving the List of Uri form the Gallery send by intent
         selectedImageUris = getIntent().getParcelableArrayListExtra("selectedImageUris");
 
+
         //accessing the ImageView in the QuizGame
         imageView = findViewById(R.id.imageViewQuiz);
 
@@ -65,48 +67,11 @@ public class QuizGame extends AppCompatActivity {
         buttonC = findViewById(R.id.answerC);
         leaveGameBtn = findViewById(R.id.leaveGameBtn);
 
+        // calling the updateUI method to display the images from the Uri list
         updateUI(selectedImageUris);
 
-        /*if (!selectedImageUris.isEmpty()){
-            // make a list where we have control of the random int values so we can shuffle the values
-            List<Uri> randomUriList = new ArrayList<>();
-            // generate a random-number so we can get a random Uri and display that image
-            Random random = new Random();
-            int randomIndexA = random.nextInt(selectedImageUris.size()); // choosing a random int from the size range of the list
-            int randomIndexB, randomIndexC;
 
-
-            //make sure that the random number are not equal
-           do{
-               randomIndexB = random.nextInt(selectedImageUris.size());
-           } while (randomIndexB == randomIndexA); // if they are equal retrieve a new random int from the list.
-
-           do {
-               randomIndexC = random.nextInt(selectedImageUris.size());
-           } while (randomIndexC == randomIndexA || randomIndexC == randomIndexB); // if they are equal retrieve a new random int from the list.
-
-            // get the random Uri from the selectedImageUris list
-            Uri randomUriA = selectedImageUris.get(randomIndexA);
-            Uri randomUriB = selectedImageUris.get(randomIndexB);
-            Uri randomUriC = selectedImageUris.get(randomIndexC);
-
-            // adding the randomIndexes to the new list so we can shuffle them so the buttons has different answer all the time
-            randomUriList.add(randomUriA);
-            randomUriList.add(randomUriB);
-            randomUriList.add(randomUriC);
-
-            // set the random Uri in the imageView
-            imageView.setImageURI(randomUriA);
-
-            // us Collection to shuffle the list to make the correct answer appear a different place each time
-            Collections.shuffle(randomUriList);
-
-            //set the button values from the indexes of the shuffled random-list
-            buttonA.setText(FileUtils.getFileNameFromUri(randomUriList.get(0)));
-            buttonB.setText(FileUtils.getFileNameFromUri(randomUriList.get(1)));
-            buttonC.setText(FileUtils.getFileNameFromUri(randomUriList.get(2)));*/
-
-            // add a on click listener to the buttons to check if the text content of the button is correct and then change the collor
+            // add a on click listener to the buttons to check if the text content of the button is correct and then change the color
             buttonA.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -137,6 +102,7 @@ public class QuizGame extends AppCompatActivity {
                 }
             });
 
+        // add a on click listener to the buttons to check if the text content of the button is correct and then change the color
             buttonB.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -167,6 +133,7 @@ public class QuizGame extends AppCompatActivity {
                 }
             });
 
+        // add a on click listener to the buttons to check if the text content of the button is correct and then change the color
             buttonC.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -198,6 +165,7 @@ public class QuizGame extends AppCompatActivity {
                 }
             });
 
+            // add a leave game button so we can exit the loop of questions
             leaveGameBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -219,6 +187,7 @@ public class QuizGame extends AppCompatActivity {
 
             // make a list where we have control of the random int values so we can shuffle the values
             List<Uri> randomUriList = new ArrayList<>();
+
             // generate a random-number so we can get a random Uri and display that image
             Random random = new Random();
 
@@ -232,11 +201,11 @@ public class QuizGame extends AppCompatActivity {
 
             //make sure that the random number are not equal
             do{
-                randomIndexB = random.nextInt(selectedImageUris.size());
+                randomIndexB = random.nextInt(selectedImageUris.size()); // choosing a random int from the size range of the list
             } while (randomIndexB == randomIndexA); // if they are equal retrieve a new random int from the list.
 
             do {
-                randomIndexC = random.nextInt(selectedImageUris.size());
+                randomIndexC = random.nextInt(selectedImageUris.size()); // choosing a random int from the size range of the list
             } while (randomIndexC == randomIndexA || randomIndexC == randomIndexB); // if they are equal retrieve a new random int from the list.
 
 
@@ -261,18 +230,20 @@ public class QuizGame extends AppCompatActivity {
             buttonB.setText(FileUtils.getFileNameFromUri(randomUriList.get(1)));
             buttonC.setText(FileUtils.getFileNameFromUri(randomUriList.get(2)));
 
+            // added a handler with delay so you can se that you have clicked the correct answer before resetting the button colors
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
 
-                    // reset the button collors when the method is loaded in again
-                    resetButtonCollor();
+                    // reset the button colors when the method is loaded in again
+                    resetButtonColor();
                 }
-            }, 800);
+            }, 300);
     }
 }
 
- public void resetButtonCollor(){
+// method to reset the button colors when we load in a new image
+ public void resetButtonColor(){
         buttonA.setBackgroundColor(Color.rgb(106, 13, 174));
         buttonB.setBackgroundColor(Color.rgb(106, 13, 174));
         buttonC.setBackgroundColor(Color.rgb(106, 13, 174));

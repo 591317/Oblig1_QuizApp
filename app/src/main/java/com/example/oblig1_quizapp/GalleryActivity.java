@@ -1,6 +1,8 @@
 package com.example.oblig1_quizapp;
 
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -45,14 +47,11 @@ public class GalleryActivity extends AppCompatActivity {
     Button playBtn;
     Button sortBtn;
 
-    //resultLauncher
+    //resultLauncher to store the Activity's caught
     ActivityResultLauncher<String> resultLauncher;
 
-    // make a ActivityResultContract since startActivityResult() is depricated
-    /*ActivityResultContracts.StartActivityForResult contract = new ActivityResultContracts.StartActivityForResult();*/
 
-
-    // List of images Uris
+    // List of images Uris, where we can save the Uris
     List<Uri> selectedImageUris = new ArrayList<>();
 
 
@@ -74,6 +73,7 @@ public class GalleryActivity extends AppCompatActivity {
         selectedImageUris.add(Uri.parse("android.resource://com.example.oblig1_quizapp/drawable/brownbear"));
         selectedImageUris.add(Uri.parse("android.resource://com.example.oblig1_quizapp/drawable/blackbear"));
 
+
         // Use a ArrayAdapter that use the list of Uris to display the content how we designed it in grind_iteam.
         ArrayAdapter<Uri> adapter = new ArrayAdapter<Uri>(this,R.layout.grid_iteam, selectedImageUris){
             @Override
@@ -83,12 +83,14 @@ public class GalleryActivity extends AppCompatActivity {
 
                 }
 
+                //access the grid_item ImageView and TextView id
                 ImageView imageView = convertView.findViewById(R.id.animalImageView);
                 TextView textView = convertView.findViewById(R.id.animalText);
 
+                // set the image based on the position in the list
                 imageView.setImageURI(getItem(position));
-                Log.d("info",getItem(position).toString());
 
+                // retrieving the name from the Uri path and set the text in the textView
                 String imageName = FileUtils.getFileNameFromUri(getItem(position));
                 textView.setText(imageName);
 
@@ -144,9 +146,8 @@ public class GalleryActivity extends AppCompatActivity {
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Remeber to send the list of URIs to the Quiz activity with the intent to share the recourse
-                // *****************************************************************************
 
+                // sharing the list with the Uris to the Quiz-game by intent, so its possible to display the items
             Intent quizListIntent = new Intent(GalleryActivity.this,QuizGame.class);
                 quizListIntent.putParcelableArrayListExtra("selectedImageUris", new ArrayList<Uri>(selectedImageUris));
                 startActivity(quizListIntent);
@@ -166,47 +167,6 @@ public class GalleryActivity extends AppCompatActivity {
 
             }
         });
-    }
-
-    // retrieve the name of the Uri so it can be displayed under the Image
-
- /*   private String getFileNameFromUri(Uri uri) {
-        String fileName = null;
-        if (uri != null) {
-            Cursor cursor = getContentResolver().query(uri,null,null,null,null);
-            if (cursor != null) {
-                if(cursor.moveToFirst()){
-                    int nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
-
-                    if(nameIndex != -1){
-                        fileName = cursor.getString(nameIndex);
-                    }
-                }
-                cursor.close();
-                
-            }
-            *//*String path = uri.getPath();*//*
-           *//* if (path != null) {
-                fileName = new File(path).getName();
-            }*//*
-        }
-        return fileName != null ? fileName : ""; // return filName if it != null or fileName is not a empty String
-    }*/
-
-    private String getFileNameFromUri(Uri uri) {
-        String fileName = null;
-        if (uri != null) {
-            String path = uri.getPath();
-            if (path != null) {
-                fileName = new File(path).getName();
-            }
-            // try to remove the file-name extension
-            int extensionIndex = fileName.lastIndexOf(".");
-            if (extensionIndex != -1){
-                fileName = fileName.substring(0,extensionIndex);
-            }
-        }
-        return fileName != null ? fileName : ""; // return filName if it != null or fileName is not a empty String
     }
 
 
