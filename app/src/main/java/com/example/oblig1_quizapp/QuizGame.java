@@ -2,6 +2,7 @@ package com.example.oblig1_quizapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -39,7 +40,7 @@ public class QuizGame extends AppCompatActivity {
     TextView attempts;
 
     // buttons for the questions names
-    Button buttonA, buttonB, buttonC;
+    Button buttonA, buttonB, buttonC, leaveGameBtn;
 
 
 
@@ -62,6 +63,7 @@ public class QuizGame extends AppCompatActivity {
         buttonA = findViewById(R.id.answerA);
         buttonB = findViewById(R.id.answerB);
         buttonC = findViewById(R.id.answerC);
+        leaveGameBtn = findViewById(R.id.leaveGameBtn);
 
         updateUI(selectedImageUris);
 
@@ -193,6 +195,15 @@ public class QuizGame extends AppCompatActivity {
 
 
 
+                }
+            });
+
+            leaveGameBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(QuizGame.this,MainActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
             });
 
