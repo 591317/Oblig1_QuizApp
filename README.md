@@ -31,4 +31,23 @@ Tapping the "Play Game" button directs you to the Quiz game interface, initiatin
  Utilizing the "Sort" button organizes the images alphabetically.
 
 
-<img src="https://github.com/591317/Oblig1_QuizApp/blob/master/QuizAppGalleryActivitypng.png?raw=true" alt="Main Activity" width="25%"><img src="https://github.com/591317/Oblig1_QuizApp/blob/master/GalleryActictyChoose.png?raw=true" alt="Main Activity" width="25%">
+<img src="https://github.com/591317/Oblig1_QuizApp/blob/master/QuizAppGalleryActivitypng.png?raw=true" alt="Main Activity" width="25%"><img src="https://github.com/591317/Oblig1_QuizApp/blob/master/GalleryActictyChoose.png?raw=true" alt="Gallery page" width="25%">
+
+# Quiz Game page
+The Quiz Game page presents you with four options:
+
+### Buttons Under the Picture
+Select the correct name of the picture displayed from one of the three buttons located below the picture. 
+The buttons change color depending on whether you guess the correct answer or not. 
+A red color indicates a wrong answer, while green indicates a correct answer.
+
+### Leave game button
+Clicking the "Leave Game" button returns the user to the main menu and stops the quiz from presenting additional questions for the selected images.
+
+### Correct Answer field
+This field displays the number of correct answers the user has managed to answer correctly.
+
+### Attempts feild
+This field displays the total number of attempts the user has made.
+
+<img src="https://github.com/591317/Oblig1_QuizApp/blob/master/QuizAppGameActivitypng.png?raw=true" alt="Quiz Game page" width="25%">
