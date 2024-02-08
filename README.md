@@ -16,4 +16,19 @@
   This step allows you to confirm your selection of images or make any necessary adjustments before beginning the quiz.
 
 
-<img src="https://github.com/591317/Oblig1_QuizApp/blob/master/Quizapp-MainActivity.png?raw=true)https://github.com/591317/Oblig1_QuizApp/blob/master/Quizapp-MainActivity.png?raw=true" alt="Main Activity" width="30%">
+<img src="https://github.com/591317/Oblig1_QuizApp/blob/master/Quizapp-MainActivity.png?raw=true)https://github.com/591317/Oblig1_QuizApp/blob/master/Quizapp-MainActivity.png?raw=true" alt="Main Activity" width="25%">
+
+# App Gallery page
+ the app's Gallery page, you're presented with three options:
+
+ ### Choose picture
+Selecting the "Choose Picture" button enables you to browse your phone's picture folder and select images for use, either from those already chosen or by adding new ones.
+
+ ### Play game
+Tapping the "Play Game" button directs you to the Quiz game interface, initiating gameplay with the images selected in the gallery.
+
+ ### Sort
+ Utilizing the "Sort" button organizes the images alphabetically.
+
+
+<img src="https://github.com/591317/Oblig1_QuizApp/blob/master/QuizAppGalleryActivitypng.png?raw=true" alt="Main Activity" width="25%"><img src="https://github.com/591317/Oblig1_QuizApp/blob/master/GalleryActictyChoose.png?raw=true" alt="Main Activity" width="25%">
