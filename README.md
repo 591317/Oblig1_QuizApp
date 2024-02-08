@@ -1,4 +1,4 @@
-# Quiz Game App demo
+# Quiz Game App demo Information
 Try a fun quiz game where you pick pictures from your gallery to play with. 
 Test your knowledge in a game filled with your favorite images.
 
